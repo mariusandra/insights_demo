@@ -43,7 +43,7 @@ user_max_id = User.last.id
     price: price,
     margin: price * rand(30) / 100.0,
     currency: currency,
-    currency_to_eur: rates[currency] / rates['EUR'],
+    currency_to_eur: rates['EUR'] / rates[currency],
     created_at: Faker::Time.between(seller.created_at, 3.days.ago, :all)
   })
 end
@@ -64,7 +64,7 @@ product_max_id = Product.last.id
   order = Order.create({
     user: user,
     currency: currency,
-    currency_to_eur: rates[currency] / rates['EUR'],
+    currency_to_eur: rates['EUR'] / rates[currency],
     created_at: created_at,
     submitted: submitted,
     submitted_at: submitted ? created_at + 1.day : nil,

@@ -10,16 +10,13 @@ Country:
       index: :primary_key
     name:
       type: :string
+    currency:
+      type: :string
     created_at:
       type: :time
     updated_at:
       type: :time
-    currency:
-      type: :string
   custom: {}
-  aggregate:
-    count:
-      sql: count($$.id)
   links:
     incoming:
       users:
@@ -36,18 +33,12 @@ Order:
     id:
       type: :number
       index: :primary_key
-    status:
-      type: :string
     total_price:
       type: :number
     currency:
       type: :string
     currency_to_eur:
       type: :number
-    created_at:
-      type: :time
-    updated_at:
-      type: :time
     submitted:
       type: :boolean
     submitted_at:
@@ -60,10 +51,13 @@ Order:
       type: :boolean
     delivered_at:
       type: :time
+    status:
+      type: :string
+    created_at:
+      type: :time
+    updated_at:
+      type: :time
   custom: {}
-  aggregate:
-    count:
-      sql: count($$.id)
   links:
     incoming:
       order_lines:
@@ -95,9 +89,6 @@ OrderLine:
     updated_at:
       type: :time
   custom: {}
-  aggregate:
-    count:
-      sql: count($$.id)
   links:
     incoming: {}
     outgoing:
@@ -133,9 +124,6 @@ Product:
     updated_at:
       type: :time
   custom: {}
-  aggregate:
-    count:
-      sql: count($$.id)
   links:
     incoming:
       order_lines:
@@ -160,15 +148,13 @@ User:
       type: :string
     email:
       type: :string
-    encrypted_password: false
+    encrypted_password:
+      type: :string
     created_at:
       type: :time
     updated_at:
       type: :time
   custom: {}
-  aggregate:
-    count:
-      sql: count($$.id)
   links:
     incoming:
       products:
