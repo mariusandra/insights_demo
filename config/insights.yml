@@ -57,7 +57,10 @@ Order:
       type: :time
     updated_at:
       type: :time
-  custom: {}
+  custom:
+    total_price_in_eur:
+      sql: "$$.total_price * $$.currency_to_eur"
+      type: :number
   links:
     incoming:
       order_lines:
