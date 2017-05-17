@@ -13,14 +13,14 @@ countries.each do |name, currency|
     currency: currency
   })
 end
-belgium_id = Country.where(name: 'Belgium').first.id
-country_max_id = Country.last.id
+belgium = Country.where(name: 'Belgium').first
+common_countries = Country.where(name: ['France', 'Belgium', 'Estonia', 'United States', 'Canada', 'Australia', 'United Kingdom', 'Tunisia']).to_a
 
 1000.times do
   User.create({
     name: Faker::Name.unique.name,
     email: Faker::Internet.unique.email,
-    country_id: rand(100) > 70 ? belgium_id : rand(country_max_id) + 1,
+    country: rand(100) > 70 ? belgium : common_countries.sample,
     encrypted_password: Digest::MD5.hexdigest(rand(1000000).to_s),
     created_at: Faker::Time.between(2.years.ago, Date.today, :all)
   })
@@ -86,7 +86,8 @@ product_max_id = Product.last.id
       product: product,
       quantity: quantity,
       item_price: item_price,
-      total_price: item_price * quantity
+      total_price: item_price * quantity,
+      currency_to_eur: rates['EUR'] / rates[currency]
     })
 
     total_price += item_price * quantity

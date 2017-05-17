@@ -6,6 +6,7 @@ class CreateOrderLines < ActiveRecord::Migration[5.0]
       t.decimal :quantity
       t.decimal :item_price
       t.decimal :total_price
+      t.decimal :currency_to_eur
       t.timestamps
     end
   end

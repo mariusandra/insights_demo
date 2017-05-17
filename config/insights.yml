@@ -91,7 +91,15 @@ OrderLine:
       type: :time
     updated_at:
       type: :time
-  custom: {}
+    currency_to_eur:
+      type: :number
+  custom:
+    item_price_in_eur:
+      sql: "$$.item_price * $$.currency_to_eur"
+      type: :number
+    total_price_in_eur:
+      sql: "$$.total_price * $$.currency_to_eur"
+      type: :number
   links:
     incoming: {}
     outgoing:
@@ -126,7 +134,10 @@ Product:
       type: :time
     updated_at:
       type: :time
-  custom: {}
+  custom:
+    price_in_eur:
+      sql: "$$.price * $$.currency_to_eur"
+      type: :number
   links:
     incoming:
       order_lines:

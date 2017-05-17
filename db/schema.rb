@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20170517072700) do
     t.decimal  "quantity"
     t.decimal  "item_price"
     t.decimal  "total_price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.decimal  "currency_to_eur"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "orders", force: :cascade do |t|
