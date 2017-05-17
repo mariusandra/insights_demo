@@ -55,9 +55,9 @@ product_max_id = Product.last.id
   user = User.where(id: user_min_id + rand(user_max_id - user_min_id)).first
   created_at = Faker::Time.between(user.created_at, 3.days.ago, :all)
 
-  submitted = rand(100) > 90
-  confirmed = submitted && rand(100) > 90
-  delivered = confirmed && (created_at < 10.days.ago || rand(100) > 80)
+  submitted = rand(100) > 50
+  confirmed = submitted && rand(100) > 10
+  delivered = confirmed && (created_at < 10.days.ago || rand(100) > 20)
   currency = user.country.currency
   currency = 'EUR' if rates[currency].blank?
 
