@@ -1,0 +1,186 @@
+---
+Country:
+  enabled: true
+  model: Country
+  table_name: countries
+  primary_key: id
+  columns:
+    id:
+      type: :number
+      index: :primary_key
+    name:
+      type: :string
+    created_at:
+      type: :time
+    updated_at:
+      type: :time
+    currency:
+      type: :string
+  custom: {}
+  aggregate:
+    count:
+      sql: count($$.id)
+  links:
+    incoming:
+      users:
+        model: User
+        model_key: country_id
+        my_key: id
+    outgoing: {}
+Order:
+  enabled: true
+  model: Order
+  table_name: orders
+  primary_key: id
+  columns:
+    id:
+      type: :number
+      index: :primary_key
+    status:
+      type: :string
+    total_price:
+      type: :number
+    currency:
+      type: :string
+    currency_to_eur:
+      type: :number
+    created_at:
+      type: :time
+    updated_at:
+      type: :time
+    submitted:
+      type: :boolean
+    submitted_at:
+      type: :time
+    confirmed:
+      type: :boolean
+    confirmed_at:
+      type: :time
+    delivered:
+      type: :boolean
+    delivered_at:
+      type: :time
+  custom: {}
+  aggregate:
+    count:
+      sql: count($$.id)
+  links:
+    incoming:
+      order_lines:
+        model: OrderLine
+        model_key: order_id
+        my_key: id
+    outgoing:
+      user:
+        model: User
+        model_key: id
+        my_key: user_id
+OrderLine:
+  enabled: true
+  model: OrderLine
+  table_name: order_lines
+  primary_key: id
+  columns:
+    id:
+      type: :number
+      index: :primary_key
+    quantity:
+      type: :number
+    item_price:
+      type: :number
+    total_price:
+      type: :number
+    created_at:
+      type: :time
+    updated_at:
+      type: :time
+  custom: {}
+  aggregate:
+    count:
+      sql: count($$.id)
+  links:
+    incoming: {}
+    outgoing:
+      order:
+        model: Order
+        model_key: id
+        my_key: order_id
+      product:
+        model: Product
+        model_key: id
+        my_key: product_id
+Product:
+  enabled: true
+  model: Product
+  table_name: products
+  primary_key: id
+  columns:
+    id:
+      type: :number
+      index: :primary_key
+    title:
+      type: :string
+    margin:
+      type: :number
+    price:
+      type: :number
+    currency:
+      type: :string
+    currency_to_eur:
+      type: :number
+    created_at:
+      type: :time
+    updated_at:
+      type: :time
+  custom: {}
+  aggregate:
+    count:
+      sql: count($$.id)
+  links:
+    incoming:
+      order_lines:
+        model: OrderLine
+        model_key: product_id
+        my_key: id
+    outgoing:
+      seller:
+        model: User
+        model_key: id
+        my_key: seller_id
+User:
+  enabled: true
+  model: User
+  table_name: users
+  primary_key: id
+  columns:
+    id:
+      type: :number
+      index: :primary_key
+    name:
+      type: :string
+    email:
+      type: :string
+    encrypted_password: false
+    created_at:
+      type: :time
+    updated_at:
+      type: :time
+  custom: {}
+  aggregate:
+    count:
+      sql: count($$.id)
+  links:
+    incoming:
+      products:
+        model: Product
+        model_key: seller_id
+        my_key: id
+      orders:
+        model: Order
+        model_key: user_id
+        my_key: id
+    outgoing:
+      country:
+        model: Country
+        model_key: id
+        my_key: country_id
