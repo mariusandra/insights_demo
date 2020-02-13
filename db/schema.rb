@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517072700) do
+ActiveRecord::Schema.define(version: 20200213225234) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
@@ -66,4 +69,9 @@ ActiveRecord::Schema.define(version: 20170517072700) do
     t.datetime "updated_at",         null: false
   end
 
+  add_foreign_key "order_lines", "orders", name: "order_lines_order_id_fk"
+  add_foreign_key "order_lines", "products", name: "order_lines_product_id_fk"
+  add_foreign_key "orders", "users", name: "orders_user_id_fk"
+  add_foreign_key "products", "users", column: "seller_id", name: "products_seller_id_fk"
+  add_foreign_key "users", "countries", name: "users_country_id_fk"
 end

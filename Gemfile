@@ -56,5 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
 gem 'insights_export'
 gem 'annotate'
+gem 'immigrant'
 
 gem 'pry-byebug'

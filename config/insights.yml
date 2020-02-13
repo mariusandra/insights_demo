@@ -184,3 +184,35 @@ User:
         model: Country
         model_key: id
         my_key: country_id
+ActiveRecord::InternalMetadata:
+  enabled: true
+  model: ActiveRecord::InternalMetadata
+  table_name: ar_internal_metadata
+  primary_key: key
+  columns:
+    key:
+      type: :string
+      index: :primary_key
+    value:
+      type: :string
+    created_at:
+      type: :time
+    updated_at:
+      type: :time
+  custom: {}
+  links:
+    incoming: {}
+    outgoing: {}
+ActiveRecord::SchemaMigration:
+  enabled: true
+  model: ActiveRecord::SchemaMigration
+  table_name: schema_migrations
+  primary_key: version
+  columns:
+    version:
+      type: :string
+      index: :primary_key
+  custom: {}
+  links:
+    incoming: {}
+    outgoing: {}
