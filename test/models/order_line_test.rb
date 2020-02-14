@@ -8,6 +8,7 @@
 #  quantity        :decimal(, )
 #  item_price      :decimal(, )
 #  total_price     :decimal(, )
+#  currency        :string
 #  currency_to_eur :decimal(, )
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

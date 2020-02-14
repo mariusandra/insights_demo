@@ -93,6 +93,8 @@ OrderLine:
       type: :time
     currency_to_eur:
       type: :number
+    currency:
+      type: :string
   custom:
     item_price_in_eur:
       sql: "$$.item_price * $$.currency_to_eur"

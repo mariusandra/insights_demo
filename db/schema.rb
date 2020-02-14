@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20200213225234) do
     t.decimal  "quantity"
     t.decimal  "item_price"
     t.decimal  "total_price"
+    t.string   "currency"
     t.decimal  "currency_to_eur"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
