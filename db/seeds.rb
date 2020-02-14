@@ -86,6 +86,7 @@ product_max_id = Product.last.id
     order.order_lines.build({
       product: product,
       quantity: quantity,
+      currency: order.currency,
       item_price: item_price,
       total_price: item_price * quantity,
       currency_to_eur: rates['EUR'] / rates[currency],
