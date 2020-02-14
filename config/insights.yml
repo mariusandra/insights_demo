@@ -168,6 +168,10 @@ User:
       type: :time
     updated_at:
       type: :time
+    first_name:
+      type: :string
+    last_name:
+      type: :string
   custom: {}
   links:
     incoming:

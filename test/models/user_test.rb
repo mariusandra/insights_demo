@@ -3,7 +3,8 @@
 # Table name: users
 #
 #  id                 :integer          not null, primary key
-#  name               :string
+#  first_name         :string
+#  last_name          :string
 #  email              :string
 #  encrypted_password :string
 #  country_id         :integer

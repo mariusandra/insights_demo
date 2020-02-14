@@ -18,7 +18,8 @@ common_countries = Country.where(name: ['France', 'Belgium', 'Estonia', 'United 
 
 1000.times do
   User.create({
-    name: Faker::Name.unique.name,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     email: Faker::Internet.unique.email,
     country: rand(100) > 70 ? belgium : common_countries.sample,
     encrypted_password: Digest::MD5.hexdigest(rand(1000000).to_s),
@@ -87,7 +88,8 @@ product_max_id = Product.last.id
       quantity: quantity,
       item_price: item_price,
       total_price: item_price * quantity,
-      currency_to_eur: rates['EUR'] / rates[currency]
+      currency_to_eur: rates['EUR'] / rates[currency],
+      created_at: order.created_at
     })
 
     total_price += item_price * quantity
